@@ -8,17 +8,38 @@
 
 import UIKit
 
-class CheckInBoardViewController: UIViewController {
+class CheckInBoardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    let personController = PersonController()
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        personController.getAllPeopleFromServer { (people) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return personController.people.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath) as? PersonTableViewCell else { return UITableViewCell() }
+        
+        let person = personController.people[indexPath.row]
+        
+        cell.person = person
+        
+        return cell
     }
     
 

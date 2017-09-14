@@ -73,7 +73,7 @@
         <!--Check In Board-->
         <scene sceneID="UOZ-AL-KzW">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="F7b-TF-Vhr" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="F7b-TF-Vhr" customClass="CheckInBoardViewController" customModule="STGBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hrZ-Wj-oJL"/>
                         <viewControllerLayoutGuide type="bottom" id="6gL-WT-zjg"/>
@@ -131,6 +131,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Check In Board" id="hWQ-Z9-YO5"/>
+                    <connections>
+                        <outlet property="tableView" destination="1dl-95-h52" id="ncy-T0-DMN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Je6-1y-TL3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

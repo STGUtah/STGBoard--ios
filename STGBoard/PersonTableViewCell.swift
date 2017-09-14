@@ -16,6 +16,14 @@ class PersonTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    var person: Person? {
+        didSet{
+            guard let person = person else { return }
+            nameLabel.text = person.fullName
+            checkedInSwitch.isOn = person.isInOffice
+        }
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -26,4 +34,9 @@ class PersonTableViewCell: UITableViewCell {
         
         
     }
+}
+
+
+protocol PersonTableViewCellDelegate: class {
+    func didChangePersonCheckedInStatus(_ person: Person, cell: PersonTableViewCell)
 }
