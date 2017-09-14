@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		FBF6136D1F6AF23200B50BE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF6136C1F6AF23200B50BE5 /* AppDelegate.swift */; };
-		FBF6136F1F6AF23200B50BE5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF6136E1F6AF23200B50BE5 /* ViewController.swift */; };
 		FBF613721F6AF23200B50BE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF613701F6AF23200B50BE5 /* Main.storyboard */; };
 		FBF613741F6AF23200B50BE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF613731F6AF23200B50BE5 /* Assets.xcassets */; };
 		FBF613771F6AF23200B50BE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF613751F6AF23200B50BE5 /* LaunchScreen.storyboard */; };
+		FBF6137F1F6B036900B50BE5 /* CheckInBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF6137E1F6B036900B50BE5 /* CheckInBoardViewController.swift */; };
+		FBF613811F6B038500B50BE5 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF613801F6B038500B50BE5 /* PersonTableViewCell.swift */; };
+		FBF613831F6B09DA00B50BE5 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF613821F6B09DA00B50BE5 /* Person.swift */; };
+		FBF613851F6B0A0300B50BE5 /* PersonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF613841F6B0A0300B50BE5 /* PersonController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FBF613691F6AF23200B50BE5 /* STGBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STGBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF6136C1F6AF23200B50BE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FBF6136E1F6AF23200B50BE5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FBF613711F6AF23200B50BE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FBF613731F6AF23200B50BE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FBF613761F6AF23200B50BE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FBF613781F6AF23200B50BE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBF6137E1F6B036900B50BE5 /* CheckInBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInBoardViewController.swift; sourceTree = "<group>"; };
+		FBF613801F6B038500B50BE5 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
+		FBF613821F6B09DA00B50BE5 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		FBF613841F6B0A0300B50BE5 /* PersonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +61,11 @@
 			isa = PBXGroup;
 			children = (
 				FBF6136C1F6AF23200B50BE5 /* AppDelegate.swift */,
-				FBF6136E1F6AF23200B50BE5 /* ViewController.swift */,
+				FBF613821F6B09DA00B50BE5 /* Person.swift */,
+				FBF613841F6B0A0300B50BE5 /* PersonController.swift */,
 				FBF613701F6AF23200B50BE5 /* Main.storyboard */,
+				FBF6137E1F6B036900B50BE5 /* CheckInBoardViewController.swift */,
+				FBF613801F6B038500B50BE5 /* PersonTableViewCell.swift */,
 				FBF613731F6AF23200B50BE5 /* Assets.xcassets */,
 				FBF613751F6AF23200B50BE5 /* LaunchScreen.storyboard */,
 				FBF613781F6AF23200B50BE5 /* Info.plist */,
@@ -137,8 +146,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBF6136F1F6AF23200B50BE5 /* ViewController.swift in Sources */,
 				FBF6136D1F6AF23200B50BE5 /* AppDelegate.swift in Sources */,
+				FBF613811F6B038500B50BE5 /* PersonTableViewCell.swift in Sources */,
+				FBF613831F6B09DA00B50BE5 /* Person.swift in Sources */,
+				FBF613851F6B0A0300B50BE5 /* PersonController.swift in Sources */,
+				FBF6137F1F6B036900B50BE5 /* CheckInBoardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +316,7 @@
 				FBF6137D1F6AF23200B50BE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
