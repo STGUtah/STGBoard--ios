@@ -14,6 +14,8 @@ class PersonTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var checkedInSwitch: RAMPaperSwitch!
     
+    weak var delegate: PersonTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -25,7 +27,10 @@ class PersonTableViewCell: UITableViewCell {
         didSet{
             guard let person = person else { return }
             nameLabel.text = person.fullName
-            checkedInSwitch.isOn = person.isInOffice
+            switch (person.isInOffice, self.checkedInSwitch.isOn) {
+            case (true, false), (false, true): checkedInSwitch.setOn(person.isInOffice, animated: true)
+            default: break
+            }
         }
     }
     

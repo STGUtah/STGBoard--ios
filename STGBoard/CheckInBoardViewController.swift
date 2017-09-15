@@ -8,10 +8,11 @@
 
 import UIKit
 
-class CheckInBoardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CheckInBoardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PersonTableViewCellDelegate {
     
     let personController = PersonController.shared
     @IBOutlet weak var tableView: UITableView!
+    let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,17 @@ class CheckInBoardViewController: UIViewController, UITableViewDelegate, UITable
         personController.getAllPeopleFromServer { (people) in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+            }
+        }
+        refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
+    
+    func refreshAction(){
+        personController.getAllPeopleFromServer { (_) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
         }
     }
@@ -39,6 +51,14 @@ class CheckInBoardViewController: UIViewController, UITableViewDelegate, UITable
         cell.selectionStyle = .none
         
         return cell
+    }
+    
+    func didChangePersonCheckedInStatus(_ person: Person, cell: PersonTableViewCell) {
+        guard let index = tableView.indexPath(for: cell) else { return }
+        var person = personController.people[index.row]
+        person.isInOffice = cell.checkedInSwitch.isOn
+        cell.checkedInSwitchValueChanged(cell.checkedInSwitch)
+        
     }
     
 
