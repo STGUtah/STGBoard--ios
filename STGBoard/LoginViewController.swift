@@ -7,19 +7,28 @@
 //
 
 import UIKit
+import TextFieldEffects
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func signInButtonTapped(_ sender: Any) {
+        guard let firstName = firstNameTextField.text,
+        let lastName = lastNameTextField.text,
+            let email = emailTextField.text else { return }
+        PersonController.shared.addNewPerson(email: email, firstName: firstName, lastName: lastName)
+        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "rootVC")
+        self.present(vc, animated: true, completion: nil)
     }
+    
     
 
     /*

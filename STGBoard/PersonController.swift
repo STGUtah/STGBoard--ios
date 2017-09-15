@@ -11,21 +11,39 @@ import Foundation
 
 class PersonController {
     
-    var people: [Person] = []
+    static let shared = PersonController()
     
-    func addPerson(email: String, firstName: String, lastName: String){
+    private init(){}
+    
+    static private let loggedInUserKey = "LoggedInUser"
+    
+    static var currentLoggedInPerson: Person? {
+        guard let personDictionary = UserDefaults.standard.object(forKey: PersonController.loggedInUserKey) as? [String : Any] else { return nil }
+        return Person(dictionary: personDictionary)
+    }
+    
+    private(set) var people: [Person] = []
+    
+    let baseURL = URL(string: "http://localhost:8080/contacts")!
+    
+    func addNewPerson(email: String, firstName: String, lastName: String){
         let person = Person(email: email, firstName: firstName, lastName: lastName, isInOffice: false)
         people.append(person)
+        save(person: person)
         putPersonOnServer(person: person)
     }
     
+    func save(person: Person) {
+        UserDefaults.standard.set(person.dictionaryRepresentation, forKey: PersonController.loggedInUserKey)
+    }
+    
     func putPersonOnServer(person: Person) {
-        let baseURL = URL(string: "http://localhost:8080/contacts")!
         
         var request = URLRequest(url: baseURL)
         
         request.httpBody = person.jsonData
-        request.httpMethod = "PUT"
+        
+        request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -47,10 +65,7 @@ class PersonController {
     
     func getAllPeopleFromServer(completion: @escaping ([Person]) -> Void) {
         
-        
-        let url = URL(string: "http://localhost:8080/contacts")!
-        
-        let request = URLRequest(url: url)
+        let request = URLRequest(url: baseURL)
         
         let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
             

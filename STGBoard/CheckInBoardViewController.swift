@@ -10,7 +10,7 @@ import UIKit
 
 class CheckInBoardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let personController = PersonController()
+    let personController = PersonController.shared
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {

@@ -7,6 +7,6 @@ target 'STGBoard' do
 
   # Pods for STGBoard
 
-  pod 'AwesomeTextField'
+pod "TextFieldEffects"
 
 end
