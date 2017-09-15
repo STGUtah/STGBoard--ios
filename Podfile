@@ -8,5 +8,6 @@ target 'STGBoard' do
   # Pods for STGBoard
 
 pod "TextFieldEffects"
+pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 
 end
