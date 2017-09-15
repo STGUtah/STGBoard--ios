@@ -16,6 +16,7 @@ class PersonTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+
     }
     
     var person: Person? {
@@ -32,6 +33,7 @@ class PersonTableViewCell: UITableViewCell {
     }
 
     @IBAction func checkedInSwitchValueChanged(_ sender: Any) {
+        
     }
 }
 
