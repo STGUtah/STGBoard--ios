@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import RAMPaperSwitch
 
 class PersonTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var checkedInSwitch: UISwitch!
+    @IBOutlet weak var checkedInSwitch: RAMPaperSwitch!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,8 +32,6 @@ class PersonTableViewCell: UITableViewCell {
     }
 
     @IBAction func checkedInSwitchValueChanged(_ sender: Any) {
-        
-        
     }
 }
 

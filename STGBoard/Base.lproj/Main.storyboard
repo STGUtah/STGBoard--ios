@@ -222,10 +222,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X13-DR-Np9">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="X13-DR-Np9" customClass="RAMPaperSwitch" customModule="RAMPaperSwitch">
                                                     <rect key="frame" x="306" y="17" width="51" height="31"/>
+                                                    <color key="onTintColor" red="0.21087898999999999" green="0.45981748189999999" blue="0.89322255709999998" alpha="0.83524186639999998" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <connections>
-                                                        <action selector="checkedInSwitchValueChanged:" destination="FW7-l3-4oA" eventType="valueChanged" id="Xid-4L-wb1"/>
+                                                        <action selector="checkedInSwitchValueChanged:" destination="FW7-l3-4oA" eventType="valueChanged" id="Rpi-bp-eKe"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -238,7 +239,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="checkedInSwitch" destination="X13-DR-Np9" id="VGq-3A-96p"/>
+                                            <outlet property="checkedInSwitch" destination="X13-DR-Np9" id="EY2-gi-38X"/>
                                             <outlet property="nameLabel" destination="iap-tZ-fAY" id="b9y-4W-XtJ"/>
                                         </connections>
                                     </tableViewCell>
