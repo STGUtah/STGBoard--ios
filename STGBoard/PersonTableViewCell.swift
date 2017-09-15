@@ -17,6 +17,8 @@ class PersonTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        checkedInSwitch.animationDidStartClosure = { on in self.animateLabel(self.nameLabel, onAnimation: on, duration: self.checkedInSwitch.duration) }
+        checkedInSwitch.animationDidStopClosure = { on, finished in self.animateLabel(self.nameLabel, onAnimation: on, duration: self.checkedInSwitch.duration) }
     }
     
     var person: Person? {
@@ -25,6 +27,12 @@ class PersonTableViewCell: UITableViewCell {
             nameLabel.text = person.fullName
             checkedInSwitch.isOn = person.isInOffice
         }
+    }
+    
+    fileprivate func animateLabel(_ label: UILabel, onAnimation: Bool, duration: TimeInterval) {
+        UIView.transition(with: label, duration: duration, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+            label.textColor = onAnimation ? UIColor.white : nil
+        }, completion:nil)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

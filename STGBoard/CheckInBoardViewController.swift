@@ -36,6 +36,7 @@ class CheckInBoardViewController: UIViewController, UITableViewDelegate, UITable
         let person = personController.people[indexPath.row]
         
         cell.person = person
+        cell.selectionStyle = .none
         
         return cell
     }
