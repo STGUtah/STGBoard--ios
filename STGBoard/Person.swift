@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct Person {
+class Person {
     
     let email: String
     let firstName: String
@@ -31,6 +31,13 @@ struct Person {
     
     var jsonData: Data? {
         return try? JSONSerialization.data(withJSONObject: dictionaryRepresentation, options: .prettyPrinted)
+    }
+    
+    init(email: String, firstName: String, lastName: String, isInOffice: Bool){
+        self.firstName = firstName
+        self.lastName = lastName
+        self.email = email
+        self.isInOffice = isInOffice
     }
 }
 
