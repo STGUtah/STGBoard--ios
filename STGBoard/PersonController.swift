@@ -97,13 +97,15 @@ class PersonController {
         dataTask.resume()
     }
     
-    private func updateDatabase(withPerson person: Person, with inOfficeStatus: Bool, completion: @escaping (_ success: Bool) -> Void) {
+    func updateDatabase(withPerson person: Person, with inOfficeStatus: Bool, completion: @escaping (_ success: Bool) -> Void) {
         
         guard let id = person.id else { print("There is no id for the current user. Cannot update database") ; return }
         
         var request = URLRequest(url: baseURL.appendingPathComponent(id))
         
         let httpBodyDictionary = ["inOffice" : inOfficeStatus]
+        
+        person.isInOffice = inOfficeStatus
         
         request.httpBody = try? JSONSerialization.data(withJSONObject: httpBodyDictionary, options: .prettyPrinted)
         

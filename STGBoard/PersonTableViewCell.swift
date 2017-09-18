@@ -46,7 +46,7 @@ class PersonTableViewCell: UITableViewCell {
     }
 
     @IBAction func checkedInSwitchValueChanged(_ sender: Any) {
-        
+        delegate?.didChangePersonCheckedInStatus(person!, cell: self)
     }
 }
 

@@ -49,17 +49,26 @@ class CheckInBoardViewController: UIViewController, UITableViewDelegate, UITable
         
         cell.person = person
         cell.selectionStyle = .none
+        cell.delegate = self
         
         return cell
     }
     
     func didChangePersonCheckedInStatus(_ person: Person, cell: PersonTableViewCell) {
         guard let index = tableView.indexPath(for: cell) else { return }
-        var person = personController.people[index.row]
-        person.isInOffice = cell.checkedInSwitch.isOn
-        cell.checkedInSwitchValueChanged(cell.checkedInSwitch)
-        
+        personController.updateDatabase(withPerson: person, with: cell.checkedInSwitch.isOn) { (success) in
+            if !success {
+                print("Error updating \(person)")
+            } else {
+                DispatchQueue.main.async {
+                    self.tableView.beginUpdates()
+                    self.tableView.reloadRows(at: [index], with: .automatic)
+                    self.tableView.endUpdates()
+                }
+            }
+        }
     }
+    
     
 
     /*
