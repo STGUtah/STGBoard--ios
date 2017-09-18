@@ -82,7 +82,7 @@ class PersonController {
             }
             
             guard let jsonDictionary = (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)) as? [String: [String : Any]], let contactsArray = jsonDictionary["_embedded"]?["contacts"] as? [[String : Any]] else {
-                print("Could not serialize json \nResponse: \(response)")
+                print("Could not serialize json \nResponse: \(String(describing: response))")
                 completion([])
                 return
             }
@@ -97,4 +97,37 @@ class PersonController {
         dataTask.resume()
     }
     
+    private func updateDatabase(withPerson person: Person, with inOfficeStatus: Bool, completion: @escaping (_ success: Bool) -> Void) {
+        
+        guard let id = person.id else { print("There is no id for the current user. Cannot update database") ; return }
+        
+        var request = URLRequest(url: baseURL.appendingPathComponent(id))
+        
+        let httpBodyDictionary = ["inOffice" : inOfficeStatus]
+        
+        request.httpBody = try? JSONSerialization.data(withJSONObject: httpBodyDictionary, options: .prettyPrinted)
+        
+        request.httpMethod = "PATCH"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            var success = false
+            defer { completion(success) }
+            
+            guard data != nil else {
+                print("No data returned from data task")
+                return
+            }
+            
+            if let error = error {
+                print("Error: \(error)")
+            } else {
+                print("Successfully saved data to endpoint. \nResponse: \(String(describing: response?.description))")
+                success = true
+            }
+        }
+        
+        dataTask.resume()
+
+    }
 }
