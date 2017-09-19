@@ -23,6 +23,7 @@
 		2DDF0575226D432C2B9A3742 /* Pods_STGBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STGBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E29E62AA95075D42575AF9C /* Pods-STGBoard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STGBoard.release.xcconfig"; path = "Pods/Target Support Files/Pods-STGBoard/Pods-STGBoard.release.xcconfig"; sourceTree = "<group>"; };
 		F52D7214C466D72F3CB66E9B /* Pods-STGBoard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STGBoard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-STGBoard/Pods-STGBoard.debug.xcconfig"; sourceTree = "<group>"; };
+		FB32E5191F71696C0059EAAF /* TestLocations.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TestLocations.gpx; sourceTree = "<group>"; };
 		FBF613691F6AF23200B50BE5 /* STGBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STGBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF6136C1F6AF23200B50BE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF613711F6AF23200B50BE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 				FBF613731F6AF23200B50BE5 /* Assets.xcassets */,
 				FBF613751F6AF23200B50BE5 /* LaunchScreen.storyboard */,
 				FBF613781F6AF23200B50BE5 /* Info.plist */,
+				FB32E5191F71696C0059EAAF /* TestLocations.gpx */,
 			);
 			path = STGBoard;
 			sourceTree = "<group>";
@@ -137,6 +139,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = JF534NBBLP;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};

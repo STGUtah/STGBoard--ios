@@ -13,6 +13,8 @@ class PersonController {
     
     static let shared = PersonController()
     
+    static let regionUpdateNotificationName = Notification.Name("RegionUpdateKey")
+    
     private init(){}
     
     static private let loggedInUserKey = "LoggedInUser"

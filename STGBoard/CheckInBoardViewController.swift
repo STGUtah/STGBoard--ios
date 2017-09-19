@@ -26,6 +26,10 @@ class CheckInBoardViewController: UIViewController, UITableViewDelegate, UITable
         }
         refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
         tableView.refreshControl = refreshControl
+        
+        NotificationCenter.default.addObserver(forName: PersonController.regionUpdateNotificationName, object: nil, queue: OperationQueue.main) { (_) in
+            self.tableView.reloadData()
+        }
     }
     
     func refreshAction(){
