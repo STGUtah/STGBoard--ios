@@ -30,16 +30,17 @@ class PersonController {
     
     func addNewPerson(email: String, firstName: String, lastName: String){
         let person = Person(email: email, firstName: firstName, lastName: lastName, isInOffice: false)
-        people.append(person)
-        save(person: person)
-        putPersonOnServer(person: person)
+        putPersonOnServer(person: person) { person in
+            self.people.append(person)
+            self.save(person: person)
+        }
     }
     
     func save(person: Person) {
         UserDefaults.standard.set(person.dictionaryRepresentation, forKey: PersonController.loggedInUserKey)
     }
     
-    func putPersonOnServer(person: Person) {
+    func putPersonOnServer(person: Person, completion: @escaping (Person) -> Void) {
         
         var request = URLRequest(url: baseURL)
         
@@ -57,7 +58,12 @@ class PersonController {
             if let error = error {
                 print("Error: \(error)")
             } else {
-                print("Successfully saved data to endpoint. \nResponse: \(String(describing: response?.description))")
+                print("Successfully saved data to endpoint.")
+                guard let data = data else { return }
+                guard let jsonDictionary = (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)) as? [String : Any] else { return }
+                if let downloadedPerson = Person(dictionary: jsonDictionary) {
+                completion(downloadedPerson)
+                }
             }
         }
         
@@ -126,7 +132,7 @@ class PersonController {
             if let error = error {
                 print("Error: \(error)")
             } else {
-                print("Successfully saved data to endpoint. \nResponse: \(String(describing: response?.description))")
+                print("Successfully saved data to endpoint.")
                 success = true
             }
         }

@@ -22,12 +22,18 @@ class Person {
     }
     
     var dictionaryRepresentation: [String : Any] {
-        return [
+        var dictionary: [String : Any] = [
             "email" : email,
             "firstName" : firstName,
             "lastName" : lastName,
             "inOffice" : isInOffice
         ]
+        
+        if let id = id {
+            dictionary["id"] = id
+        }
+        
+        return dictionary
     }
     
     var jsonData: Data? {
@@ -52,6 +58,9 @@ extension Person {
         
         self.init(email: email, firstName: firstName, lastName: lastName, isInOffice: inOffice)
         
+        if let id = dictionary["id"] as? String {
+            self.id = id
+        }
         guard let linksDictionary = dictionary["_links"] as? [String : Any], let selfDictionary = linksDictionary["self"] as? [String : Any], let linkHref = selfDictionary["href"] as? String else { return }
         
         self.id = linkHref.components(separatedBy: "/").last
