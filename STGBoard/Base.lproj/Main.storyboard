@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EYb-TA-ggb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EYb-TA-ggb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,7 +42,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="BBT-am-PDb">
-                                <rect key="frame" x="62.5" y="183" width="250" height="300"/>
+                                <rect key="frame" x="62.5" y="208" width="250" height="250"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the STG app" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aub-qL-Pv4">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="20.5"/>
@@ -50,8 +50,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="first name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yWi-wM-p42" customClass="YokoTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="0.0" y="38" width="250" height="60"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="first name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yWi-wM-p42" customClass="AkiraTextField" customModule="TextFieldEffects">
+                                        <rect key="frame" x="0.0" y="25.5" width="250" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="V2h-gP-zF7"/>
                                         </constraints>
@@ -70,8 +70,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZLx-bG-bJI" customClass="YokoTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="0.0" y="115.5" width="250" height="60"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZLx-bG-bJI" customClass="AkiraTextField" customModule="TextFieldEffects">
+                                        <rect key="frame" x="0.0" y="90.5" width="250" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="gPz-nw-YUU"/>
                                         </constraints>
@@ -79,12 +79,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
-                                                <color key="value" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
-                                                <color key="value" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
                                                 <real key="value" value="0.80000000000000004"/>
                                             </userDefinedRuntimeAttribute>
@@ -96,8 +90,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xlt-HD-18U" customClass="YokoTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="0.0" y="192.5" width="250" height="60"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xlt-HD-18U" customClass="AkiraTextField" customModule="TextFieldEffects">
+                                        <rect key="frame" x="0.0" y="155" width="250" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="JMJ-0z-omS"/>
                                         </constraints>
@@ -105,12 +99,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
-                                                <color key="value" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
-                                                <color key="value" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
                                                 <real key="value" value="0.80000000000000004"/>
                                             </userDefinedRuntimeAttribute>
@@ -123,7 +111,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKY-WD-iI1">
-                                        <rect key="frame" x="0.0" y="270" width="250" height="30"/>
+                                        <rect key="frame" x="0.0" y="220" width="250" height="30"/>
                                         <state key="normal" title="Sign In"/>
                                         <connections>
                                             <action selector="signInButtonTapped:" destination="l5C-70-TFQ" eventType="touchUpInside" id="vIE-qE-T97"/>
@@ -132,7 +120,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="3G9-uV-fI0"/>
-                                    <constraint firstAttribute="height" constant="300" id="JE9-or-tCD"/>
+                                    <constraint firstAttribute="height" constant="250" id="JE9-or-tCD"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -177,12 +165,11 @@
                     <tabBarItem key="tabBarItem" title="Board" id="vK5-k3-Zz8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gOh-8D-lrK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="R9Y-e2-hlz">
-                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
@@ -206,7 +193,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="65" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="1dl-95-h52">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="514"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="personCell" rowHeight="65" id="FW7-l3-4oA" customClass="PersonTableViewCell" customModule="STGBoard" customModuleProvider="target">
