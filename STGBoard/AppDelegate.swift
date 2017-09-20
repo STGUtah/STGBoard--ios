@@ -9,7 +9,7 @@
 import UIKit
 import ChameleonFramework
 import CoreLocation
-
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     let locationManager = CLLocationManager()
-    
     let stgRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 40.75694, longitude: -111.882478), radius: 500, identifier: "STGHome")
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -39,6 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         locationManager.requestAlwaysAuthorization()
+        
+        
         
         return true
     }
@@ -64,8 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
-    
 }
 
 
@@ -88,7 +88,16 @@ extension AppDelegate: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Updated Location")
+        let date = Date()
+        let hourOfDay = NSCalendar.current.component(.hour, from: date)
+        print("&&&&&&&&&&&&&&&&&&&&&")
+        print(hourOfDay)
+        print("&&&&&&&&&&&&&&&&&&&&&")
+        
+        guard hourOfDay > 8 && hourOfDay < 18 else {
+            // cancel the monitoring and wait for the next onE
+            return
+        }
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
