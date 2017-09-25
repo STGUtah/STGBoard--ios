@@ -96,9 +96,9 @@ class PersonController {
             }
             
             let people = contactsArray.flatMap({ Person(dictionary: $0) })
-            self.people = people
+            self.people = people.sorted(by: { $0.0.fullName.lowercased() < $0.1.fullName.lowercased() })
             
-            completion(people)
+            completion(people.sorted(by: { $0.0.fullName.lowercased() < $0.1.fullName.lowercased() }))
         }
         
         dataTask.resume()
