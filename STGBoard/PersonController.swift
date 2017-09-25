@@ -24,7 +24,11 @@ class PersonController {
         return Person(dictionary: personDictionary)
     }
     
-    private(set) var people: [Person] = []
+    private(set) var people: [Person] = [] {
+        didSet {
+            people = people.sorted(by: { $0.0.fullName.lowercased() < $0.1.fullName.lowercased() })
+        }
+    }
     
     let baseURL = URL(string: "http://localhost:8080/contacts")!
     
@@ -33,6 +37,7 @@ class PersonController {
         putPersonOnServer(person: person) { person in
             self.people.append(person)
             self.save(person: person)
+            NotificationCenter.default.post(name: PersonController.regionUpdateNotificationName, object: self)
         }
     }
     
@@ -96,9 +101,9 @@ class PersonController {
             }
             
             let people = contactsArray.flatMap({ Person(dictionary: $0) })
-            self.people = people.sorted(by: { $0.0.fullName.lowercased() < $0.1.fullName.lowercased() })
+            self.people = people
             
-            completion(people.sorted(by: { $0.0.fullName.lowercased() < $0.1.fullName.lowercased() }))
+            completion(people)
         }
         
         dataTask.resume()
@@ -131,7 +136,6 @@ class PersonController {
             if let error = error {
                 print("Error: \(error)")
             } else {
-                print("Successfully saved data to endpoint.")
                 success = true
             }
         }
