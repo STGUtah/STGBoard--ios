@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B9594520D6602AFCF7ED0601 /* Pods_STGBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DDF0575226D432C2B9A3742 /* Pods_STGBoard.framework */; };
+		FBAC8F931F798D05009B9CED /* BillRateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC8F921F798D05009B9CED /* BillRateCollectionViewCell.swift */; };
+		FBAC8F951F798D2D009B9CED /* BillRateCalculatorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC8F941F798D2D009B9CED /* BillRateCalculatorTableViewController.swift */; };
+		FBAC8F971F798D9F009B9CED /* BillRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC8F961F798D9F009B9CED /* BillRateViewController.swift */; };
 		FBF6136D1F6AF23200B50BE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF6136C1F6AF23200B50BE5 /* AppDelegate.swift */; };
 		FBF613721F6AF23200B50BE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF613701F6AF23200B50BE5 /* Main.storyboard */; };
 		FBF613741F6AF23200B50BE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF613731F6AF23200B50BE5 /* Assets.xcassets */; };
@@ -24,6 +27,9 @@
 		3E29E62AA95075D42575AF9C /* Pods-STGBoard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STGBoard.release.xcconfig"; path = "Pods/Target Support Files/Pods-STGBoard/Pods-STGBoard.release.xcconfig"; sourceTree = "<group>"; };
 		F52D7214C466D72F3CB66E9B /* Pods-STGBoard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STGBoard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-STGBoard/Pods-STGBoard.debug.xcconfig"; sourceTree = "<group>"; };
 		FB32E5191F71696C0059EAAF /* TestLocations.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TestLocations.gpx; sourceTree = "<group>"; };
+		FBAC8F921F798D05009B9CED /* BillRateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillRateCollectionViewCell.swift; sourceTree = "<group>"; };
+		FBAC8F941F798D2D009B9CED /* BillRateCalculatorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillRateCalculatorTableViewController.swift; sourceTree = "<group>"; };
+		FBAC8F961F798D9F009B9CED /* BillRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillRateViewController.swift; sourceTree = "<group>"; };
 		FBF613691F6AF23200B50BE5 /* STGBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STGBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF6136C1F6AF23200B50BE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBF613711F6AF23200B50BE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -94,6 +100,9 @@
 				FBF613701F6AF23200B50BE5 /* Main.storyboard */,
 				FBF6137E1F6B036900B50BE5 /* CheckInBoardViewController.swift */,
 				FBF613801F6B038500B50BE5 /* PersonTableViewCell.swift */,
+				FBAC8F961F798D9F009B9CED /* BillRateViewController.swift */,
+				FBAC8F941F798D2D009B9CED /* BillRateCalculatorTableViewController.swift */,
+				FBAC8F921F798D05009B9CED /* BillRateCollectionViewCell.swift */,
 				FBF613731F6AF23200B50BE5 /* Assets.xcassets */,
 				FBF613751F6AF23200B50BE5 /* LaunchScreen.storyboard */,
 				FBF613781F6AF23200B50BE5 /* Info.plist */,
@@ -245,7 +254,10 @@
 				FBF6136D1F6AF23200B50BE5 /* AppDelegate.swift in Sources */,
 				FBF613811F6B038500B50BE5 /* PersonTableViewCell.swift in Sources */,
 				FBF613831F6B09DA00B50BE5 /* Person.swift in Sources */,
+				FBAC8F971F798D9F009B9CED /* BillRateViewController.swift in Sources */,
+				FBAC8F931F798D05009B9CED /* BillRateCollectionViewCell.swift in Sources */,
 				FBF613851F6B0A0300B50BE5 /* PersonController.swift in Sources */,
+				FBAC8F951F798D2D009B9CED /* BillRateCalculatorTableViewController.swift in Sources */,
 				FBF6137F1F6B036900B50BE5 /* CheckInBoardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
