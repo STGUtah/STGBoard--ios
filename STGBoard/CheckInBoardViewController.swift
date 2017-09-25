@@ -61,7 +61,7 @@ class CheckInBoardViewController: UIViewController, UITableViewDelegate, UITable
     
     func didChangePersonCheckedInStatus(_ person: Person, cell: PersonTableViewCell) {
         guard let index = tableView.indexPath(for: cell) else { return }
-        personController.updateDatabase(withPerson: person, with: cell.checkedInSwitch.isOn) { (success) in
+        personController.updateDatabase(withPerson: person, to: cell.checkedInSwitch.isOn) { (success) in
             if !success {
                 print("Error updating \(person)")
             } else {

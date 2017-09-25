@@ -96,7 +96,6 @@ class PersonController {
             }
             
             let people = contactsArray.flatMap({ Person(dictionary: $0) })
-            
             self.people = people
             
             completion(people)
@@ -105,7 +104,7 @@ class PersonController {
         dataTask.resume()
     }
     
-    func updateDatabase(withPerson person: Person, with inOfficeStatus: Bool, completion: @escaping (_ success: Bool) -> Void) {
+    func updateDatabase(withPerson person: Person, to inOfficeStatus: Bool, completion: @escaping (_ success: Bool) -> Void) {
         
         guard let id = person.id else { print("There is no id for the current user. Cannot update database") ; return }
         
@@ -136,8 +135,6 @@ class PersonController {
                 success = true
             }
         }
-        
         dataTask.resume()
-
     }
 }

@@ -69,7 +69,7 @@ extension AppDelegate: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         print("Entered Region")
         guard let person = PersonController.currentLoggedInPerson else { return }
-        PersonController.shared.updateDatabase(withPerson: person, with: true) { (_) in
+        PersonController.shared.updateDatabase(withPerson: person, to: true) { (_) in
             NotificationCenter.default.post(name: PersonController.regionUpdateNotificationName, object: self)
         }
         lastUpdated = Date()
@@ -78,7 +78,7 @@ extension AppDelegate: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         print("Exited Region")
         guard let person = PersonController.currentLoggedInPerson else { return }
-        PersonController.shared.updateDatabase(withPerson: person, with: false) { (_) in
+        PersonController.shared.updateDatabase(withPerson: person, to: false) { (_) in
             NotificationCenter.default.post(name: PersonController.regionUpdateNotificationName, object: self)
         }
         lastUpdated = Date()
@@ -88,6 +88,8 @@ extension AppDelegate: CLLocationManagerDelegate {
         if status == .authorizedAlways {
             locationManager.startMonitoring(for: stgRegion)
             locationManager.startMonitoringVisits()
+        } else {
+            // TODO: Provide Error Handling if user is not always sharing location
         }
     }
     
@@ -105,12 +107,13 @@ extension AppDelegate: CLLocationManagerDelegate {
             }
         }
         guard let currentLoggedOnPerson = PersonController.currentLoggedInPerson else { print("There is no logged in person") ; return }
-        PersonController.shared.updateDatabase(withPerson: currentLoggedOnPerson, with: stgRegion.contains(visit.coordinate)) { (_) in
+        PersonController.shared.updateDatabase(withPerson: currentLoggedOnPerson, to: stgRegion.contains(visit.coordinate)) { (_) in
             NotificationCenter.default.post(name: PersonController.regionUpdateNotificationName, object: self)
         }
         lastUpdated = Date()
     }
     
+    // TODO: Provide Better error handling here -->
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("There was an error with the location manager! \(error.localizedDescription)")
     }
