@@ -23,13 +23,30 @@ class LoginViewController: UIViewController {
         guard let firstName = firstNameTextField.text,
         let lastName = lastNameTextField.text,
             let email = emailTextField.text else { return }
-        PersonController.shared.addNewPerson(email: email, firstName: firstName, lastName: lastName)
+        
+        doesUserExist(email: email) { (person) in
+            if let person = person {
+                PersonController.shared.save(person: person)
+            } else {
+                PersonController.shared.addNewPerson(email: email, firstName: firstName, lastName: lastName)
+            }
+        }
         
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "rootVC")
         self.present(vc, animated: true, completion: nil)
     }
     
-    
+    private func doesUserExist(email: String, completion: @escaping (_ person: Person?) -> Void) {
+        PersonController.shared.getAllPeopleFromServer { (people) in
+            if let person = people.filter({ $0.email == email }).first {
+                // user exists
+                completion(person)
+            } else {
+                // user doesn't exist yet
+                completion(nil)
+            }
+        }
+    }
 
     /*
     // MARK: - Navigation
