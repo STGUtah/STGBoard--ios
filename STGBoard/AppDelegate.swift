@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    var lastUpdated: Date?
+    
     let locationManager = CLLocationManager()
     let stgRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 40.75694, longitude: -111.882478), radius: 500, identifier: "STGHome")
     
@@ -25,22 +27,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Chameleon.setGlobalThemeUsingPrimaryColor(FlatTeal(), with: .light)
         
+        locationManager.requestAlwaysAuthorization()
+        
+        locationManager.delegate = self
+        
         guard PersonController.currentLoggedInPerson != nil else {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVC")
             window?.rootViewController = vc
             return true
         }
-        
-        locationManager.delegate = self
-        
-        if CLLocationManager.significantLocationChangeMonitoringAvailable() {
-            locationManager.requestAlwaysAuthorization()
-        }
-        
-        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
-        locationManager.requestAlwaysAuthorization()
-        
-        
         
         return true
     }
@@ -77,6 +72,7 @@ extension AppDelegate: CLLocationManagerDelegate {
         PersonController.shared.updateDatabase(withPerson: person, with: true) { (_) in
             NotificationCenter.default.post(name: PersonController.regionUpdateNotificationName, object: self)
         }
+        lastUpdated = Date()
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
@@ -85,26 +81,38 @@ extension AppDelegate: CLLocationManagerDelegate {
         PersonController.shared.updateDatabase(withPerson: person, with: false) { (_) in
             NotificationCenter.default.post(name: PersonController.regionUpdateNotificationName, object: self)
         }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let date = Date()
-        let hourOfDay = NSCalendar.current.component(.hour, from: date)
-        print("&&&&&&&&&&&&&&&&&&&&&")
-        print(hourOfDay)
-        print("&&&&&&&&&&&&&&&&&&&&&")
-        
-        guard hourOfDay > 8 && hourOfDay < 18 else {
-            // cancel the monitoring and wait for the next onE
-            return
-        }
+        lastUpdated = Date()
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways {
             locationManager.startMonitoring(for: stgRegion)
-            locationManager.startMonitoringSignificantLocationChanges()
+            locationManager.startMonitoringVisits()
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
+        // determine if the visit info needs to update the database or if the region monitoring has already updated it
+        if let lastUpdated = lastUpdated {
+            if visit.arrivalDate < lastUpdated && visit.departureDate < lastUpdated {
+                print("The visit information is coming after the last boundary crossing. Doing nothing")
+                return
+            } else if visit.departureDate == Date.distantFuture {
+                if visit.arrivalDate < lastUpdated {
+                    print("The visit information is coming after the last boundary crossing. Doing nothing")
+                    return
+                }
+            }
+        }
+        guard let currentLoggedOnPerson = PersonController.currentLoggedInPerson else { print("There is no logged in person") ; return }
+        PersonController.shared.updateDatabase(withPerson: currentLoggedOnPerson, with: stgRegion.contains(visit.coordinate)) { (_) in
+            NotificationCenter.default.post(name: PersonController.regionUpdateNotificationName, object: self)
+        }
+        lastUpdated = Date()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("There was an error with the location manager! \(error.localizedDescription)")
     }
 }
 
