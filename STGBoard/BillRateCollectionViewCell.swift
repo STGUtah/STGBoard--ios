@@ -10,4 +10,9 @@ import UIKit
 
 class BillRateCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dollarLabel: UILabel!
+    @IBOutlet weak var percentLabel: UILabel!
+    
+    
 }

@@ -10,6 +10,8 @@ import UIKit
 
 class BillRateViewController: UIViewController {
 
+    @IBOutlet weak var salarySegmentedControl: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
