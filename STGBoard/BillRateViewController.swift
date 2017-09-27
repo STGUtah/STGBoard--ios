@@ -10,7 +10,7 @@ import UIKit
 import TextFieldEffects
 
 class BillRateViewController: UIViewController {
-
+    
     @IBOutlet weak var salarySegmentedControl: UISegmentedControl!
     @IBOutlet weak var wageTextField: AkiraTextField!
     
@@ -23,7 +23,7 @@ class BillRateViewController: UIViewController {
         addAccessoryViewToTextfield()
         wageTextField.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -46,23 +46,25 @@ class BillRateViewController: UIViewController {
     func myTextFieldDidChange(_ textField: UITextField) {
         if let amountString = textField.text?.currencyInputFormatting() {
             textField.text = amountString
-            guard var wageAmount = textField.text else { return }
-            wageAmount.removeFirst(1)
+            guard var wageAmount = textField.text, wageAmount.characters.count > 0 else {
+                self.delegate?.updateFields(withWageType: salarySegmentedControl.selectedSegmentIndex == 0 ? .salary : .hourly, andWage: 0.00)
+                return
+            }
             
-            self.delegate?.updateCollectionView(withWageType: salarySegmentedControl.selectedSegmentIndex == 0 ? .salary : .hourly, andWage: Double(wageAmount) ?? 0.00)
+            self.delegate?.updateFields(withWageType: salarySegmentedControl.selectedSegmentIndex == 0 ? .salary : .hourly, andWage: wageAmount.currencyDouble())
         }
     }
-
+    
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let billRateCalcTVC = segue.destination as? BillRateCalculatorTableViewController {
             self.delegate = billRateCalcTVC
         }
     }
-
+    
 }
 
 enum WageType {
@@ -96,8 +98,22 @@ extension String {
         
         return formatter.string(from: number)!
     }
+    
+    func currencyDouble() -> Double {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = "$"
+        
+        var amountWithPrefix = self
+        
+        // remove from String: "$", ".", ","
+        let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
+        amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.characters.count), withTemplate: "")
+        
+        return ((amountWithPrefix as NSString).doubleValue) / 100.00
+    }
 }
 
 protocol BillRateViewControllerDelegate: class {
-    func updateCollectionView(withWageType wageType: WageType, andWage wage: Double)
+    func updateFields(withWageType wageType: WageType, andWage wage: Double)
 }

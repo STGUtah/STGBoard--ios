@@ -47,9 +47,12 @@ class BillRateCalculatorTableViewController: UITableViewController, UICollection
         
     }
     
-    func updateCollectionView(withWageType wageType: WageType, andWage wage: Double) {
+    func updateFields(withWageType wageType: WageType, andWage wage: Double) {
         self.wageType = wageType
         self.wage = wage
+        self.hourlyRateLabel.text = hourlyRate.currencyString
+        self.taxesAndBenefitsLabel.text = taxesAndBenefitsDollarAmount.currencyString
+        self.totalCostLabel.text = "\(totalCostPerHour.currencyString) /hr"
         collectionView.reloadData()
     }
     
@@ -84,4 +87,15 @@ class BillRateCalculatorTableViewController: UITableViewController, UICollection
     }
     */
 
+}
+
+extension Double {
+    var currencyString: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.maximumFractionDigits = 2
+        formatter.locale = Locale(identifier: Locale.current.identifier)
+        guard let result = formatter.string(from: self as NSNumber) else { return "" }
+        return result
+    }
 }
