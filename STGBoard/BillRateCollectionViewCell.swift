@@ -14,5 +14,8 @@ class BillRateCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var dollarLabel: UILabel!
     @IBOutlet weak var percentLabel: UILabel!
     
-    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
 }
