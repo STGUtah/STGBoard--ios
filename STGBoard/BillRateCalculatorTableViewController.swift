@@ -19,6 +19,15 @@ class BillRateCalculatorTableViewController: UITableViewController, UICollection
     var wageType: WageType?
     var wage: Double?
     
+    let dataSource: [Double] = {
+        var dataSource = [Double]()
+        for i in 0..<KeyNumbers.percentagePoints.count {
+            dataSource.append(KeyNumbers.percentagePoints[i])
+            dataSource.append(KeyNumbers.dollarPoints[i])
+        }
+        return dataSource
+    }()
+    
     var hourlyRate: Double {
         guard let wage = wage, let wageType = wageType else { return 0.00 }
         switch wageType  {
@@ -57,19 +66,25 @@ class BillRateCalculatorTableViewController: UITableViewController, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "billRateCell", for: indexPath) as? BillRateCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.dollarLabel.text = "$3"
-        cell.percentLabel.text = "%2"
-        cell.titleLabel.text = String(describing: wage)
+        let data = dataSource[indexPath.row]
+        
+        if data > 1.00 {
+            cell.set(withDollarAmount: data, andTotalCost: totalCostPerHour)
+        } else {
+            cell.set(withPercentAmount: data, andTotalCost: totalCostPerHour)
+        }
         
         return cell
         
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let spaceBetweenCells: CGFloat = 8
@@ -94,6 +109,15 @@ extension Double {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.maximumFractionDigits = 2
+        formatter.locale = Locale(identifier: Locale.current.identifier)
+        guard let result = formatter.string(from: self as NSNumber) else { return "" }
+        return result
+    }
+    
+    var percentString: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.maximumFractionDigits = 0
         formatter.locale = Locale(identifier: Locale.current.identifier)
         guard let result = formatter.string(from: self as NSNumber) else { return "" }
         return result
