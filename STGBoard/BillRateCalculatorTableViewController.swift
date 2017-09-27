@@ -89,7 +89,7 @@ class BillRateCalculatorTableViewController: UITableViewController, UICollection
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let spaceBetweenCells: CGFloat = 8
         let dim = (collectionView.bounds.width - 2 * spaceBetweenCells) / 2
-        return CGSize(width: dim, height: 90)
+        return CGSize(width: dim, height: 70)
     }
     
     /*

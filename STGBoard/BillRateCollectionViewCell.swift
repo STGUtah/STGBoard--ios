@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class BillRateCollectionViewCell: UICollectionViewCell {
     
@@ -28,6 +29,7 @@ class BillRateCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        layer.cornerRadius = 15
+        backgroundColor = FlatGray()
     }
 }
