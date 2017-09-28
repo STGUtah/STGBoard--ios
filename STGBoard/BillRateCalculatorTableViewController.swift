@@ -15,6 +15,7 @@ class BillRateCalculatorTableViewController: UITableViewController, UICollection
     @IBOutlet weak var totalCostLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var taxesAndBenfitisButton: UIButton!
+    @IBOutlet weak var benefitsSwitch: UISwitch!
     
     var wageType: WageType?
     var wage: Double?
@@ -39,7 +40,7 @@ class BillRateCalculatorTableViewController: UITableViewController, UICollection
     }
     
     var taxesAndBenefitsDollarAmount: Double {
-        return hourlyRate * KeyNumbers.estimatedTaxes + KeyNumbers.benefitDollarAmount + KeyNumbers.awardDollarAmount
+        return hourlyRate * KeyNumbers.estimatedTaxes + (benefitsSwitch.isOn ? KeyNumbers.benefitDollarAmount : 0) + KeyNumbers.awardDollarAmount
     }
     
     var totalCostPerHour: Double {
@@ -64,6 +65,11 @@ class BillRateCalculatorTableViewController: UITableViewController, UICollection
 
     @IBAction func taxesAndBenefitsButtonTapped(_ sender: UIButton) {
         
+    }
+    
+    @IBAction func benefitsSwitchChangedValue(_ sender: UISwitch) {
+        guard let wageType = wageType, let wage = wage else { return }
+        updateFields(withWageType: wageType, andWage: wage)
     }
     
     func updateFields(withWageType wageType: WageType, andWage wage: Double) {
