@@ -423,6 +423,7 @@
                         <outlet property="emailTextField" destination="xlt-HD-18U" id="Ygl-fV-WQ7"/>
                         <outlet property="firstNameTextField" destination="yWi-wM-p42" id="DP1-pD-afG"/>
                         <outlet property="lastNameTextField" destination="ZLx-bG-bJI" id="gkx-lc-yqH"/>
+                        <outlet property="signInButton" destination="EKY-WD-iI1" id="xpX-j2-MWL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K4R-cm-WRt" userLabel="First Responder" sceneMemberID="firstResponder"/>

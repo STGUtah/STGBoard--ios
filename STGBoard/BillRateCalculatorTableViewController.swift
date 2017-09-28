@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class BillRateCalculatorTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, BillRateViewControllerDelegate {
     
@@ -53,6 +54,8 @@ class BillRateCalculatorTableViewController: UITableViewController, UICollection
         collectionView.delegate = self
         collectionView.dataSource = self
         tableView.allowsSelection = false
+        taxesAndBenfitisButton.backgroundColor = FlatTealDark()
+        taxesAndBenfitisButton.layer.cornerRadius = taxesAndBenfitisButton.bounds.height / 2
         
         tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapRecognized))
         tableView.addGestureRecognizer(tapGestureRecognizer!)

@@ -8,15 +8,18 @@
 
 import UIKit
 import TextFieldEffects
+import ChameleonFramework
 
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var signInButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        signInButton.backgroundColor = FlatTealDark()
     }
     
     @IBAction func signInButtonTapped(_ sender: Any) {
