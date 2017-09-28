@@ -18,18 +18,18 @@ class BillRateCollectionViewCell: UICollectionViewCell {
     func set(withDollarAmount dollarAmount: Double, andTotalCost totalCost: Double) {
         titleLabel.text = dollarAmount.currencyString
         leftLabel.text = (totalCost + dollarAmount).currencyString
-        rightLabel.text = (1 - (totalCost / leftLabel.text!.currencyDouble())).percentString
+        rightLabel.text = "(\((1 - (totalCost / leftLabel.text!.currencyDouble())).percentString))"
     }
     
     func set(withPercentAmount percentAmount: Double, andTotalCost totalCost: Double) {
         titleLabel.text = percentAmount.percentString
         leftLabel.text = (totalCost / (1 - percentAmount)).currencyString
-        rightLabel.text = (leftLabel.text!.currencyDouble() - totalCost).currencyString
+        rightLabel.text = "(\((leftLabel.text!.currencyDouble() - totalCost).currencyString))"
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.cornerRadius = 15
-        backgroundColor = FlatGray()
+        backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.2)
     }
 }

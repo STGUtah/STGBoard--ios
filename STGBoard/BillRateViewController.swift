@@ -11,6 +11,7 @@ import TextFieldEffects
 
 class BillRateViewController: UIViewController {
     
+    static let dismissNotificationName = Notification.Name("dismiss")
     @IBOutlet weak var salarySegmentedControl: UISegmentedControl!
     @IBOutlet weak var wageTextField: AkiraTextField!
     
@@ -19,9 +20,13 @@ class BillRateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         wageTextField.placeholder = "Salary"
-        wageTextField.keyboardType = .numberPad
+        wageTextField.keyboardType = .decimalPad
         addAccessoryViewToTextfield()
         wageTextField.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
+        
+        NotificationCenter.default.addObserver(forName: BillRateViewController.dismissNotificationName, object: nil, queue: OperationQueue.main) { (_) in
+            self.wageTextField.resignFirstResponder()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,19 +44,38 @@ class BillRateViewController: UIViewController {
         self.wageTextField.inputAccessoryView = toolbar
     }
     
+    @IBAction func salaryHourlySegmentedControllerChangeValue(_ sender: UISegmentedControl) {
+        wageTextField.text = ""
+        wageTextField.placeholder = salarySegmentedControl.selectedSegmentIndex == 0 ? "Salary" : "Hourly"
+    }
+    
     @objc private func doneButtonAction() {
         wageTextField.resignFirstResponder()
     }
     
     func myTextFieldDidChange(_ textField: UITextField) {
-        if let amountString = textField.text?.currencyInputFormatting() {
-            textField.text = amountString
-            guard var wageAmount = textField.text, wageAmount.characters.count > 0 else {
-                self.delegate?.updateFields(withWageType: salarySegmentedControl.selectedSegmentIndex == 0 ? .salary : .hourly, andWage: 0.00)
-                return
+        switch salarySegmentedControl.selectedSegmentIndex {
+        case 0:
+            if let amountString = textField.text?.currencyInputFormattingForSalary() {
+                textField.text = amountString
+                guard var wageAmount = textField.text, wageAmount.characters.count > 0 else {
+                    self.delegate?.updateFields(withWageType: salarySegmentedControl.selectedSegmentIndex == 0 ? .salary : .hourly, andWage: 0.00)
+                    return
+                }
+                
+                self.delegate?.updateFields(withWageType: salarySegmentedControl.selectedSegmentIndex == 0 ? .salary : .hourly, andWage: wageAmount.currencyDouble())
             }
-            
-            self.delegate?.updateFields(withWageType: salarySegmentedControl.selectedSegmentIndex == 0 ? .salary : .hourly, andWage: wageAmount.currencyDouble())
+        case 1:
+            if let amountString = textField.text?.currencyInputFormattingForHourly() {
+                textField.text = amountString
+                guard var wageAmount = textField.text, wageAmount.characters.count > 0 else {
+                    self.delegate?.updateFields(withWageType: salarySegmentedControl.selectedSegmentIndex == 0 ? .salary : .hourly, andWage: 0.00)
+                    return
+                }
+                
+                self.delegate?.updateFields(withWageType: salarySegmentedControl.selectedSegmentIndex == 0 ? .salary : .hourly, andWage: wageAmount.currencyDouble())
+            }
+        default: return
         }
     }
     
@@ -75,7 +99,7 @@ enum WageType {
 extension String {
     
     // formatting text for currency textField
-    func currencyInputFormatting() -> String {
+    func currencyInputFormattingForSalary() -> String {
         
         var number: NSNumber!
         let formatter = NumberFormatter()
@@ -92,6 +116,31 @@ extension String {
         
         let double = (amountWithPrefix as NSString).doubleValue
         number = NSNumber(value: (double))
+        
+        // if first number is 0 or all numbers were deleted
+        guard number != 0 as NSNumber else {
+            return ""
+        }
+        
+        return formatter.string(from: number)!
+    }
+    
+    func currencyInputFormattingForHourly() -> String {
+        
+        var number: NSNumber!
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.maximumFractionDigits = 2
+        formatter.currencySymbol = "$"
+        
+        var amountWithPrefix = self
+        
+        // remove from String: "$", ".", ","
+        let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
+        amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.characters.count), withTemplate: "")
+        
+        let double = (amountWithPrefix as NSString).doubleValue
+        number = NSNumber(value: (double) / 100)
         
         // if first number is 0 or all numbers were deleted
         guard number != 0 as NSNumber else {

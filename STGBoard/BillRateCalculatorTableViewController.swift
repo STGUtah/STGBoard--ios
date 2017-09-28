@@ -19,6 +19,8 @@ class BillRateCalculatorTableViewController: UITableViewController, UICollection
     var wageType: WageType?
     var wage: Double?
     
+    var tapGestureRecognizer: UITapGestureRecognizer?
+    
     let dataSource: [Double] = {
         var dataSource = [Double]()
         for i in 0..<KeyNumbers.percentagePoints.count {
@@ -43,12 +45,20 @@ class BillRateCalculatorTableViewController: UITableViewController, UICollection
     var totalCostPerHour: Double {
         return hourlyRate + taxesAndBenefitsDollarAmount
     }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        tableView.allowsSelection = false
+        
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapRecognized))
+        tableView.addGestureRecognizer(tapGestureRecognizer!)
+        
+    }
+    
+    func tapRecognized() {
+        NotificationCenter.default.post(name: BillRateViewController.dismissNotificationName, object: self)
     }
 
 
@@ -90,6 +100,10 @@ class BillRateCalculatorTableViewController: UITableViewController, UICollection
         let spaceBetweenCells: CGFloat = 8
         let dim = (collectionView.bounds.width - 2 * spaceBetweenCells) / 2
         return CGSize(width: dim, height: 70)
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            self.tapRecognized()
     }
     
     /*
