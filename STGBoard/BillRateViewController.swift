@@ -27,7 +27,9 @@ class BillRateViewController: UIViewController {
         NotificationCenter.default.addObserver(forName: BillRateViewController.dismissNotificationName, object: nil, queue: OperationQueue.main) { (_) in
             self.wageTextField.resignFirstResponder()
         }
+    
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

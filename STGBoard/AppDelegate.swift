@@ -26,6 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         Chameleon.setGlobalThemeUsingPrimaryColor(FlatTeal(), with: .light)
+        UIApplication.shared.statusBarStyle = .lightContent
+        //[[UIBarButtonItem appearanceWhenContainedIn:[UIToolbar class], nil] setTintColor:contentColor];
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UIToolbar.self]).tintColor = .clear
+        UIToolbar.appearance().tintColor = .clear
+        UIToolbar.appearance().barTintColor = .clear
         
         locationManager.requestAlwaysAuthorization()
         

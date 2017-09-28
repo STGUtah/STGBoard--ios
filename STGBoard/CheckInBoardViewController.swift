@@ -31,6 +31,7 @@ class CheckInBoardViewController: UIViewController, UITableViewDelegate, UITable
         NotificationCenter.default.addObserver(forName: PersonController.regionUpdateNotificationName, object: nil, queue: OperationQueue.main) { (_) in
             self.refreshAction()
         }
+        
     }
     
     func refreshAction(){

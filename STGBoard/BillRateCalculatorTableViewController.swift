@@ -49,6 +49,7 @@ class BillRateCalculatorTableViewController: UITableViewController, UICollection
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        benefitsSwitch.isOn = true
         collectionView.delegate = self
         collectionView.dataSource = self
         tableView.allowsSelection = false

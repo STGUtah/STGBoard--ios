@@ -24,13 +24,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yOd-mT-1WW">
-                                <rect key="frame" x="0.0" y="230" width="375" height="388"/>
+                                <rect key="frame" x="0.0" y="190" width="375" height="428"/>
                                 <connections>
                                     <segue destination="M33-aW-Mcn" kind="embed" identifier="toBillRateTableViewController" id="gxQ-Kp-hJK"/>
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lUI-GS-HQ3">
-                                <rect key="frame" x="133" y="112" width="109" height="29"/>
+                                <rect key="frame" x="133" y="72" width="109" height="29"/>
                                 <segments>
                                     <segment title="Salary"/>
                                     <segment title="Hourly"/>
@@ -40,7 +40,7 @@
                                 </connections>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NmS-h3-nfC" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="21" y="152" width="333" height="60"/>
+                                <rect key="frame" x="21" y="112" width="333" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="q6s-Xv-Cfn"/>
                                 </constraints>
@@ -70,14 +70,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mzp-ZV-eH8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1908" y="483.50824587706148"/>
+            <point key="canvasLocation" x="2247.1999999999998" y="483.50824587706148"/>
         </scene>
         <!--Bill Rate Calculator Table View Controller-->
         <scene sceneID="olx-dh-IlL">
             <objects>
                 <tableViewController id="M33-aW-Mcn" customClass="BillRateCalculatorTableViewController" customModule="STGBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NdW-ro-uJz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="388"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="428"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -315,12 +315,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0cw-vb-HkB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2711" y="483"/>
+            <point key="canvasLocation" x="3048.8000000000002" y="482.15892053973016"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="BEc-1y-Adg">
             <objects>
-                <viewController storyboardIdentifier="loginVC" id="l5C-70-TFQ" customClass="LoginViewController" customModule="STGBoard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="l5C-70-TFQ" customClass="LoginViewController" customModule="STGBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GaW-n0-mNf"/>
                         <viewControllerLayoutGuide type="bottom" id="lXJ-eu-6e2"/>
@@ -418,6 +418,7 @@
                             <constraint firstItem="BBT-am-PDb" firstAttribute="centerY" secondItem="VZM-rb-dKx" secondAttribute="centerY" constant="-50" id="zZG-0N-lOE"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="0tc-OY-Hnv"/>
                     <connections>
                         <outlet property="emailTextField" destination="xlt-HD-18U" id="Ygl-fV-WQ7"/>
                         <outlet property="firstNameTextField" destination="yWi-wM-p42" id="DP1-pD-afG"/>
@@ -426,7 +427,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K4R-cm-WRt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-746" y="143"/>
+            <point key="canvasLocation" x="-407.19999999999999" y="142.57871064467767"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DBb-hG-qL1">
@@ -444,7 +445,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fCZ-AI-1ww" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="218" y="144"/>
+            <point key="canvasLocation" x="556" y="143.47826086956522"/>
         </scene>
         <!--Board-->
         <scene sceneID="hgw-cj-yZp">
@@ -466,7 +467,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1C-0J-kDO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1119.2" y="-181.25937031484258"/>
+            <point key="canvasLocation" x="1458.4000000000001" y="-181.25937031484258"/>
         </scene>
         <!--Check In Board-->
         <scene sceneID="UOZ-AL-KzW">
@@ -536,7 +537,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Je6-1y-TL3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1908" y="-178.56071964017991"/>
+            <point key="canvasLocation" x="2247.1999999999998" y="-178.56071964017991"/>
         </scene>
         <!--Calculator-->
         <scene sceneID="BdE-ED-IZu">
@@ -555,7 +556,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CMP-A2-RJU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1119" y="485"/>
+            <point key="canvasLocation" x="1456.8" y="484.40779610194909"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Acd-cP-cab">
+            <objects>
+                <navigationController storyboardIdentifier="loginVC" automaticallyAdjustsScrollViewInsets="NO" id="gfC-4n-bCR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kbZ-o6-BdE">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="l5C-70-TFQ" kind="relationship" relationship="rootViewController" id="tFB-Ya-VMN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mja-W9-Xhw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1220" y="143"/>
         </scene>
     </scenes>
 </document>
