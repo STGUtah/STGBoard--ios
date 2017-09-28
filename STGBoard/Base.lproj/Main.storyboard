@@ -156,11 +156,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="140" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ft9-7C-S8O">
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ft9-7C-S8O">
                                                     <rect key="frame" x="8" y="8" width="359" height="27.5"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiW-6W-HTK">
-                                                            <rect key="frame" x="0.0" y="0.0" width="166.5" height="27.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="179.5" height="27.5"/>
                                                             <state key="normal" title="Taxes and Benefits"/>
                                                             <connections>
                                                                 <action selector="taxesAndBenefitsButtonTapped:" destination="M33-aW-Mcn" eventType="touchUpInside" id="VEE-mp-3py"/>
@@ -173,6 +173,9 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="ZiW-6W-HTK" firstAttribute="width" secondItem="Ft9-7C-S8O" secondAttribute="width" multiplier="1/2" id="Fo6-pL-xvC"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
