@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yOd-mT-1WW">
-                                <rect key="frame" x="0.0" y="190" width="375" height="428"/>
+                                <rect key="frame" x="0.0" y="184" width="375" height="434"/>
                                 <connections>
                                     <segue destination="M33-aW-Mcn" kind="embed" identifier="toBillRateTableViewController" id="gxQ-Kp-hJK"/>
                                 </connections>
@@ -40,7 +40,7 @@
                                 </connections>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NmS-h3-nfC" customClass="AkiraTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="21" y="112" width="333" height="60"/>
+                                <rect key="frame" x="21" y="106" width="333" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="q6s-Xv-Cfn"/>
                                 </constraints>
@@ -57,13 +57,14 @@
                             <constraint firstItem="yOd-mT-1WW" firstAttribute="leading" secondItem="59E-vQ-AFF" secondAttribute="leading" id="Gcl-zf-iSC"/>
                             <constraint firstItem="lUI-GS-HQ3" firstAttribute="centerX" secondItem="59E-vQ-AFF" secondAttribute="centerX" id="MGs-Hf-U2W"/>
                             <constraint firstItem="NmS-h3-nfC" firstAttribute="width" secondItem="59E-vQ-AFF" secondAttribute="width" multiplier="8/9" id="gL1-F1-NMY"/>
-                            <constraint firstItem="NmS-h3-nfC" firstAttribute="top" secondItem="lUI-GS-HQ3" secondAttribute="bottom" constant="12" id="hn2-sW-fxp"/>
+                            <constraint firstItem="NmS-h3-nfC" firstAttribute="top" secondItem="lUI-GS-HQ3" secondAttribute="bottom" constant="6" id="hn2-sW-fxp"/>
                             <constraint firstAttribute="trailing" secondItem="yOd-mT-1WW" secondAttribute="trailing" id="pS6-Wm-QpQ"/>
                             <constraint firstItem="yOd-mT-1WW" firstAttribute="top" secondItem="NmS-h3-nfC" secondAttribute="bottom" constant="18" id="sFc-c6-X0u"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Bill Rate Calculator" id="X4b-gG-6XF"/>
                     <connections>
+                        <outlet property="containerView" destination="yOd-mT-1WW" id="AgZ-L3-nq7"/>
                         <outlet property="salarySegmentedControl" destination="lUI-GS-HQ3" id="o96-J1-0Az"/>
                         <outlet property="wageTextField" destination="NmS-h3-nfC" id="mMW-kO-T8M"/>
                     </connections>
@@ -77,7 +78,7 @@
             <objects>
                 <tableViewController id="M33-aW-Mcn" customClass="BillRateCalculatorTableViewController" customModule="STGBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NdW-ro-uJz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="428"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="434"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -139,6 +140,10 @@
                                                             </connections>
                                                         </switch>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="6i2-B1-v7X" secondAttribute="trailing" id="0Tf-3z-ufo"/>
+                                                        <constraint firstItem="6i2-B1-v7X" firstAttribute="centerY" secondItem="eYt-Ch-P4D" secondAttribute="centerY" id="rDc-hF-Tle"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
@@ -219,15 +224,15 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="432" id="qfN-F2-4xK">
-                                        <rect key="frame" x="0.0" y="176" width="375" height="432"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="106" id="qfN-F2-4xK">
+                                        <rect key="frame" x="0.0" y="176" width="375" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qfN-F2-4xK" id="JYu-wl-z1i">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="431.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="105.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yib-Rc-cK2">
-                                                    <rect key="frame" x="12" y="12" width="351" height="359.5"/>
+                                                    <rect key="frame" x="12" y="12" width="351" height="81.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hdd-ok-1JK">
                                                         <size key="itemSize" width="161" height="82"/>
@@ -290,7 +295,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="yib-Rc-cK2" secondAttribute="trailing" constant="12" id="OhF-fW-bGW"/>
-                                                <constraint firstAttribute="bottom" secondItem="yib-Rc-cK2" secondAttribute="bottom" constant="60" id="fn0-6z-p2N"/>
+                                                <constraint firstAttribute="bottom" secondItem="yib-Rc-cK2" secondAttribute="bottom" constant="12" id="fn0-6z-p2N"/>
                                                 <constraint firstItem="yib-Rc-cK2" firstAttribute="top" secondItem="JYu-wl-z1i" secondAttribute="top" constant="12" id="wGL-38-D9u"/>
                                                 <constraint firstItem="yib-Rc-cK2" firstAttribute="leading" secondItem="JYu-wl-z1i" secondAttribute="leading" constant="12" id="zfm-Jv-Bwe"/>
                                             </constraints>
@@ -452,7 +457,7 @@
         <scene sceneID="hgw-cj-yZp">
             <objects>
                 <navigationController id="Gdi-KE-5r6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Board" id="vK5-k3-Zz8"/>
+                    <tabBarItem key="tabBarItem" title="Board" image="report_card" id="vK5-k3-Zz8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gOh-8D-lrK">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -544,7 +549,7 @@
         <scene sceneID="BdE-ED-IZu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="91Y-Tp-EQA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Calculator" id="if9-na-Nnh"/>
+                    <tabBarItem key="tabBarItem" title="Calculator" image="calculator" id="if9-na-Nnh"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="U6E-E7-MNO">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -578,4 +583,8 @@
             <point key="canvasLocation" x="-1220" y="143"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="calculator" width="30" height="30"/>
+        <image name="report_card" width="30" height="30"/>
+    </resources>
 </document>

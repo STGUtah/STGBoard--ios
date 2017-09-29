@@ -14,6 +14,7 @@ class BillRateViewController: UIViewController {
     static let dismissNotificationName = Notification.Name("dismiss")
     @IBOutlet weak var salarySegmentedControl: UISegmentedControl!
     @IBOutlet weak var wageTextField: AkiraTextField!
+    @IBOutlet weak var containerView: UIView!
     
     weak var delegate: BillRateViewControllerDelegate?
     
@@ -88,6 +89,7 @@ class BillRateViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let billRateCalcTVC = segue.destination as? BillRateCalculatorTableViewController {
             self.delegate = billRateCalcTVC
+            billRateCalcTVC.frameOfView = containerView.frame.height
         }
     }
     

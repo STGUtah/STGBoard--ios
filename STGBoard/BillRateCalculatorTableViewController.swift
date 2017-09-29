@@ -59,7 +59,6 @@ class BillRateCalculatorTableViewController: UITableViewController, UICollection
         
         tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapRecognized))
         tableView.addGestureRecognizer(tapGestureRecognizer!)
-        
     }
     
     func tapRecognized() {
@@ -83,6 +82,13 @@ class BillRateCalculatorTableViewController: UITableViewController, UICollection
         self.taxesAndBenefitsLabel.text = taxesAndBenefitsDollarAmount.currencyString
         self.totalCostLabel.text = "\(totalCostPerHour.currencyString) /hr"
         collectionView.reloadData()
+    }
+    
+    var frameOfView: CGFloat?
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard indexPath.row == 4 else { return super.tableView(tableView, heightForRowAt: indexPath) }
+        return tableView.layer.preferredFrameSize().height - (4 * 44) + 12
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
