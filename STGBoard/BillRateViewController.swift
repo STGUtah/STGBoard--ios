@@ -8,20 +8,22 @@
 
 import UIKit
 import TextFieldEffects
+import ChameleonFramework
 
-class BillRateViewController: UIViewController {
+class BillRateViewController: UIViewController, UITextFieldDelegate {
     
     static let dismissNotificationName = Notification.Name("dismiss")
     @IBOutlet weak var salarySegmentedControl: UISegmentedControl!
-    @IBOutlet weak var wageTextField: AkiraTextField!
+    @IBOutlet weak var wageTextField: MadokaTextField!
     @IBOutlet weak var containerView: UIView!
     
     weak var delegate: BillRateViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        wageTextField.placeholder = "Salary"
+        wageTextField.placeholder = "Enter Salary Here"
         wageTextField.keyboardType = .numberPad
+        wageTextField.delegate = self
         addAccessoryViewToTextfield()
         wageTextField.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
         
@@ -29,6 +31,8 @@ class BillRateViewController: UIViewController {
             self.wageTextField.resignFirstResponder()
         }
     
+        wageTextField.placeholderColor = FlatTealDark()
+        wageTextField.borderColor = FlatTealDark()
     }
     
     
@@ -90,6 +94,16 @@ class BillRateViewController: UIViewController {
         if let billRateCalcTVC = segue.destination as? BillRateCalculatorTableViewController {
             self.delegate = billRateCalcTVC
             billRateCalcTVC.frameOfView = containerView.frame.height
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.placeholder = "Salary"
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.text == "" {
+            textField.placeholder = "Enter Salary Here"
         }
     }
     

@@ -26,6 +26,7 @@ class BillRateCalculatorTableViewController: UITableViewController, UICollection
     
     let dataSource: [Double] = {
         var dataSource = [Double]()
+        guard KeyNumbers.percentagePoints.count == KeyNumbers.dollarPoints.count else { return [] }
         for i in 0..<KeyNumbers.percentagePoints.count {
             dataSource.append(KeyNumbers.percentagePoints[i])
             dataSource.append(KeyNumbers.dollarPoints[i])
