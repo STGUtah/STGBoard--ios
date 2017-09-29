@@ -8,6 +8,7 @@
 
 import UIKit
 import ChameleonFramework
+import Presentr
 
 class BillRateCalculatorTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, BillRateViewControllerDelegate {
     
@@ -65,9 +66,25 @@ class BillRateCalculatorTableViewController: UITableViewController, UICollection
         NotificationCenter.default.post(name: BillRateViewController.dismissNotificationName, object: self)
     }
 
+    let presenter: Presentr = {
+        let taxesAndBenefitsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "taxesAndBenefitsTVC") as! TaxesAndBenefitsTableViewController
+        let width = ModalSize.fluid(percentage: 0.9)
+        let height = ModalSize.custom(size: 344)
+        let center = ModalCenterPosition.center
+        
+        let customPresenter = Presentr(presentationType: .custom(width: width, height: height, center: center))
+        let customTransition = CrossDissolveAnimation(options: .normal(duration: 0.2))
+        customPresenter.dismissTransitionType = TransitionType.custom(customTransition)
+        customPresenter.roundCorners = true
+        customPresenter.cornerRadius = 15
+        customPresenter.backgroundOpacity = 0.5
+        customPresenter.dismissAnimated = true
+        return customPresenter
+    }()
 
     @IBAction func taxesAndBenefitsButtonTapped(_ sender: UIButton) {
-        
+        let taxesAndBenefitsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "taxesAndBenefitsTVC")
+        customPresentViewController(presenter, viewController: taxesAndBenefitsVC, animated: true, completion: nil)
     }
     
     @IBAction func benefitsSwitchChangedValue(_ sender: UISwitch) {
@@ -148,6 +165,15 @@ extension Double {
         let formatter = NumberFormatter()
         formatter.numberStyle = .percent
         formatter.maximumFractionDigits = 0
+        formatter.locale = Locale(identifier: Locale.current.identifier)
+        guard let result = formatter.string(from: self as NSNumber) else { return "" }
+        return result
+    }
+    
+    var percentString2Decimals: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.maximumFractionDigits = 2
         formatter.locale = Locale(identifier: Locale.current.identifier)
         guard let result = formatter.string(from: self as NSNumber) else { return "" }
         return result
