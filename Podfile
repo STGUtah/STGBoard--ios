@@ -11,5 +11,6 @@ pod "TextFieldEffects"
 pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 pod 'RAMPaperSwitch'
 pod 'Presentr'
+pod 'IQKeyboardManagerSwift'
 
 end

@@ -21,7 +21,7 @@ class BillRateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         wageTextField.placeholder = "Salary"
-        wageTextField.keyboardType = .decimalPad
+        wageTextField.keyboardType = .numberPad
         addAccessoryViewToTextfield()
         wageTextField.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
         

@@ -10,6 +10,7 @@ import UIKit
 import ChameleonFramework
 import CoreLocation
 import UserNotifications
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,6 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         locationManager.requestAlwaysAuthorization()
         
         locationManager.delegate = self
+        
+        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().shouldShowToolbarPlaceholder = false
+        IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
+        IQKeyboardManager.sharedManager().toolbarManageBehaviour = .byPosition
+        IQKeyboardManager.sharedManager().toolbarTintColor = FlatTealDark()
+        IQKeyboardManager.sharedManager().toolbarBarTintColor = FlatTealDark()
         
         guard PersonController.currentLoggedInPerson != nil else {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVC")
