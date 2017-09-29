@@ -20,6 +20,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         signInButton.backgroundColor = FlatTealDark()
+        signInButton.layer.cornerRadius = 15
     }
     
     @IBAction func signInButtonTapped(_ sender: Any) {

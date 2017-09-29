@@ -67,14 +67,13 @@ class BillRateCalculatorTableViewController: UITableViewController, UICollection
     }
 
     let presenter: Presentr = {
-        let taxesAndBenefitsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "taxesAndBenefitsTVC") as! TaxesAndBenefitsTableViewController
         let width = ModalSize.fluid(percentage: 0.9)
         let height = ModalSize.custom(size: 344)
         let center = ModalCenterPosition.center
         
         let customPresenter = Presentr(presentationType: .custom(width: width, height: height, center: center))
-        let customTransition = CrossDissolveAnimation(options: .normal(duration: 0.2))
-        customPresenter.dismissTransitionType = TransitionType.custom(customTransition)
+        let animation = PresentrAnimation(options: .normal(duration: 0.15))
+        customPresenter.transitionType = TransitionType.custom(animation)
         customPresenter.roundCorners = true
         customPresenter.cornerRadius = 15
         customPresenter.backgroundOpacity = 0.5

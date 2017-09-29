@@ -43,7 +43,8 @@ class TaxesAndBenefitsTableViewController: UITableViewController {
         
         totalLabel.text = runningPercentageTotal.percentString2Decimals
         
-        
+        tableView.isScrollEnabled = false
+        tableView.allowsSelection = false
         okayButton.backgroundColor = FlatWhite()
         okayButton.tintColor = FlatTealDark()
     }
