@@ -10,7 +10,7 @@ import UIKit
 import TextFieldEffects
 import ChameleonFramework
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTextField.delegate = self
         signInButton.backgroundColor = FlatTealDark()
         signInButton.layer.cornerRadius = 15
     }
@@ -51,6 +52,14 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.tag == 2, let firstnameText = self.firstNameTextField.text, !firstnameText.isEmpty, let lastnameText = self.lastNameTextField.text, !lastnameText.isEmpty, let email = self.emailTextField.text, !email.isEmpty {
+            signInButtonTapped(self)
+        }
+        return true
+    }
+    
 
     /*
     // MARK: - Navigation
