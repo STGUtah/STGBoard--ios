@@ -147,7 +147,7 @@ class PersonController {
     }
     
     func isLocationAlwaysEnabled() -> Bool {
-        
+        return LocationManager.shared.manager.allowsBackgroundLocationUpdates
     }
     
     func isNetworkReachable() -> Bool {
