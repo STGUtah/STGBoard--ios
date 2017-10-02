@@ -32,7 +32,7 @@ class BillRateCollectionViewCell: UICollectionViewCell {
     private func emptyString(withTitle title: String) {
         titleLabel.text = title
         leftLabel.text = "--"
-        rightLabel.text = "--"
+        rightLabel.text = ""
     }
     
     override func awakeFromNib() {
