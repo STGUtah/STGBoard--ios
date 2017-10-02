@@ -7,15 +7,19 @@
 //
 
 import Foundation
-
+import Reachability
 
 class PersonController {
     
     static let shared = PersonController()
     
+    let reachability: Reachability
+    
     static let regionUpdateNotificationName = Notification.Name("RegionUpdateKey")
     
-    private init(){}
+    private init(){
+        reachability = Reachability()!
+    }
     
     static private let loggedInUserKey = "LoggedInUser"
     
@@ -140,5 +144,13 @@ class PersonController {
             }
         }
         dataTask.resume()
+    }
+    
+    func isLocationAlwaysEnabled() -> Bool {
+        
+    }
+    
+    func isNetworkReachable() -> Bool {
+        return reachability.connection != .none
     }
 }

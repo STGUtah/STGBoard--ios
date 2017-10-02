@@ -13,5 +13,6 @@ pod 'RAMPaperSwitch'
 pod 'Presentr'
 pod 'IQKeyboardManagerSwift'
 pod 'DZNEmptyDataSet'
+pod 'ReachabilitySwift', '~> 4.0-beta2'
 
 end
