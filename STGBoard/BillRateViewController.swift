@@ -21,7 +21,7 @@ class BillRateViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        wageTextField.placeholder = "Enter Salary Here"
+        updateWageTextFieldPlaceholderText()
         wageTextField.keyboardType = .numberPad
         wageTextField.delegate = self
         addAccessoryViewToTextfield()
@@ -53,7 +53,24 @@ class BillRateViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func salaryHourlySegmentedControllerChangeValue(_ sender: UISegmentedControl) {
         wageTextField.text = ""
-        wageTextField.placeholder = salarySegmentedControl.selectedSegmentIndex == 0 ? "Salary" : "Hourly"
+        updateWageTextFieldPlaceholderText()
+    }
+    
+    private func updateWageTextFieldPlaceholderText() {
+        var placeholderString = String()
+        switch (self.salarySegmentedControl.selectedSegmentIndex, self.wageTextField.text!.isEmpty, self.wageTextField.isEditing) {
+        case (0, true, false):
+            placeholderString = "Enter Salary Here"
+        case (1, true, false):
+            placeholderString = "Enter Hourly Wage Here"
+        case (0, false, true), (0, true, true):
+            placeholderString = "Salary"
+        case (1, false, true), (1, true, true):
+            placeholderString = "Hourly"
+        default:
+            break
+        }
+        wageTextField.placeholder = placeholderString
     }
     
     @objc private func doneButtonAction() {
@@ -99,14 +116,14 @@ class BillRateViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         guard let textField = textField as? MadokaTextField else { return }
-        textField.placeholder = "Salary"
+        updateWageTextFieldPlaceholderText()
         textField.placeholderColor = FlatTealDark().withAlphaComponent(1.0)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.text == "" {
             guard let textField = textField as? MadokaTextField else { return }
-            textField.placeholder = "Enter Salary Here"
+            updateWageTextFieldPlaceholderText()
             textField.placeholderColor = FlatTealDark().withAlphaComponent(0.4)
         }
     }

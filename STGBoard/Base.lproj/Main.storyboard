@@ -24,13 +24,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yOd-mT-1WW">
-                                <rect key="frame" x="0.0" y="204" width="320" height="315"/>
+                                <rect key="frame" x="0.0" y="244" width="320" height="275"/>
                                 <connections>
                                     <segue destination="M33-aW-Mcn" kind="embed" identifier="toBillRateTableViewController" id="gxQ-Kp-hJK"/>
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lUI-GS-HQ3">
-                                <rect key="frame" x="105.5" y="72" width="109" height="29"/>
+                                <rect key="frame" x="105.5" y="112" width="109" height="29"/>
                                 <segments>
                                     <segment title="Salary"/>
                                     <segment title="Hourly"/>
@@ -40,7 +40,7 @@
                                 </connections>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NmS-h3-nfC" customClass="MadokaTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="18" y="112" width="284" height="80"/>
+                                <rect key="frame" x="18" y="152" width="284" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="q6s-Xv-Cfn"/>
                                 </constraints>
@@ -78,7 +78,7 @@
             <objects>
                 <tableViewController id="M33-aW-Mcn" customClass="BillRateCalculatorTableViewController" customModule="STGBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NdW-ro-uJz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="315"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="275"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
