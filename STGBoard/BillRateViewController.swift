@@ -44,9 +44,10 @@ class BillRateViewController: UIViewController, UITextFieldDelegate {
     private func addAccessoryViewToTextfield() {
         let toolbar:UIToolbar = UIToolbar()
         //create left side empty space so that done button set on right side
+        let clearButton = UIBarButtonItem(title: "Clear", style: .plain, target: self, action: #selector(clearButtonAction))
         let flexSpace = UIBarButtonItem(barButtonSystemItem:    .flexibleSpace, target: nil, action: nil)
         let doneBtn: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonAction))
-        toolbar.setItems([flexSpace, doneBtn], animated: false)
+        toolbar.setItems([clearButton, flexSpace, doneBtn], animated: false)
         toolbar.sizeToFit()
         self.wageTextField.inputAccessoryView = toolbar
     }
@@ -54,27 +55,40 @@ class BillRateViewController: UIViewController, UITextFieldDelegate {
     @IBAction func salaryHourlySegmentedControllerChangeValue(_ sender: UISegmentedControl) {
         wageTextField.text = ""
         updateWageTextFieldPlaceholderText()
+        textFieldDidEndEditing(wageTextField)
     }
     
     private func updateWageTextFieldPlaceholderText() {
+        
+        // updates the placeholder if necessary.
+        
         var placeholderString = String()
         switch (self.salarySegmentedControl.selectedSegmentIndex, self.wageTextField.text!.isEmpty, self.wageTextField.isEditing) {
         case (0, true, false):
             placeholderString = "Enter Salary Here"
         case (1, true, false):
             placeholderString = "Enter Hourly Wage Here"
-        case (0, false, true), (0, true, true):
+        case (0, false, true), (0, false, false), (0, true, true):
             placeholderString = "Salary"
-        case (1, false, true), (1, true, true):
+        case (1, false, true), (1, false, false),(1, true, true):
             placeholderString = "Hourly"
         default:
             break
         }
-        wageTextField.placeholder = placeholderString
+        
+        if wageTextField.placeholder != placeholderString {
+            wageTextField.placeholder = placeholderString
+        }
     }
     
     @objc private func doneButtonAction() {
         wageTextField.resignFirstResponder()
+        updateWageTextFieldPlaceholderText()
+    }
+    
+    @objc private func clearButtonAction() {
+        wageTextField.text = ""
+        updateWageTextFieldPlaceholderText()
     }
     
     func myTextFieldDidChange(_ textField: UITextField) {
@@ -103,14 +117,6 @@ class BillRateViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-        guard let wageText = wageTextField.text else { return }
-        if wageText.isEmpty {
-            self.delegate?.updateFields(withWageType: .salary, andWage: 0.00)
-        }
-    }
-    
-    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -132,6 +138,7 @@ class BillRateViewController: UIViewController, UITextFieldDelegate {
             guard let textField = textField as? MadokaTextField else { return }
             updateWageTextFieldPlaceholderText()
             textField.placeholderColor = FlatTealDark().withAlphaComponent(0.4)
+            self.delegate?.updateFields(withWageType: .salary, andWage: 0.00)
         }
     }
     
