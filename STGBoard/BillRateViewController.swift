@@ -31,7 +31,7 @@ class BillRateViewController: UIViewController, UITextFieldDelegate {
             self.wageTextField.resignFirstResponder()
         }
     
-        wageTextField.placeholderColor = FlatTealDark()
+        wageTextField.placeholderColor = FlatTealDark().withAlphaComponent(0.4)
         wageTextField.borderColor = FlatTealDark()
     }
     
@@ -98,12 +98,16 @@ class BillRateViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        guard let textField = textField as? MadokaTextField else { return }
         textField.placeholder = "Salary"
+        textField.placeholderColor = FlatTealDark().withAlphaComponent(1.0)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.text == "" {
+            guard let textField = textField as? MadokaTextField else { return }
             textField.placeholder = "Enter Salary Here"
+            textField.placeholderColor = FlatTealDark().withAlphaComponent(0.4)
         }
     }
     

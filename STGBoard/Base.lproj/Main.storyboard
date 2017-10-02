@@ -184,10 +184,10 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Ft9-7C-S8O" firstAttribute="top" secondItem="Ftn-IM-VuM" secondAttribute="topMargin" id="CCw-or-Q61"/>
+                                                <constraint firstItem="Ft9-7C-S8O" firstAttribute="top" secondItem="Ftn-IM-VuM" secondAttribute="top" constant="8" id="CCw-or-Q61"/>
                                                 <constraint firstItem="Ft9-7C-S8O" firstAttribute="leading" secondItem="Ftn-IM-VuM" secondAttribute="leadingMargin" id="Ugv-vD-KrD"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Ft9-7C-S8O" secondAttribute="trailing" id="UlQ-09-p7U"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Ft9-7C-S8O" secondAttribute="bottom" id="dzX-Sp-7wx"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ft9-7C-S8O" secondAttribute="bottom" constant="8" id="dzX-Sp-7wx"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
