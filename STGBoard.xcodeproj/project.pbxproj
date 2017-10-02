@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B9594520D6602AFCF7ED0601 /* Pods_STGBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DDF0575226D432C2B9A3742 /* Pods_STGBoard.framework */; };
+		FB342C411F82B3820059473C /* BoardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB342C401F82B3820059473C /* BoardError.swift */; };
 		FBAC8F931F798D05009B9CED /* BillRateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC8F921F798D05009B9CED /* BillRateCollectionViewCell.swift */; };
 		FBAC8F951F798D2D009B9CED /* BillRateCalculatorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC8F941F798D2D009B9CED /* BillRateCalculatorTableViewController.swift */; };
 		FBAC8F971F798D9F009B9CED /* BillRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAC8F961F798D9F009B9CED /* BillRateViewController.swift */; };
@@ -29,6 +30,7 @@
 		3E29E62AA95075D42575AF9C /* Pods-STGBoard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STGBoard.release.xcconfig"; path = "Pods/Target Support Files/Pods-STGBoard/Pods-STGBoard.release.xcconfig"; sourceTree = "<group>"; };
 		F52D7214C466D72F3CB66E9B /* Pods-STGBoard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STGBoard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-STGBoard/Pods-STGBoard.debug.xcconfig"; sourceTree = "<group>"; };
 		FB32E5191F71696C0059EAAF /* TestLocations.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TestLocations.gpx; sourceTree = "<group>"; };
+		FB342C401F82B3820059473C /* BoardError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardError.swift; sourceTree = "<group>"; };
 		FBAC8F921F798D05009B9CED /* BillRateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillRateCollectionViewCell.swift; sourceTree = "<group>"; };
 		FBAC8F941F798D2D009B9CED /* BillRateCalculatorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillRateCalculatorTableViewController.swift; sourceTree = "<group>"; };
 		FBAC8F961F798D9F009B9CED /* BillRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillRateViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				FBF6136C1F6AF23200B50BE5 /* AppDelegate.swift */,
 				FBF613861F6B1F0100B50BE5 /* LoginViewController.swift */,
 				FBF613821F6B09DA00B50BE5 /* Person.swift */,
+				FB342C401F82B3820059473C /* BoardError.swift */,
 				FBF613841F6B0A0300B50BE5 /* PersonController.swift */,
 				FBF613701F6AF23200B50BE5 /* Main.storyboard */,
 				FBF6137E1F6B036900B50BE5 /* CheckInBoardViewController.swift */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBB30AC01F7BEBAB00D2400D /* KeyNumbers.swift in Sources */,
+				FB342C411F82B3820059473C /* BoardError.swift in Sources */,
 				FBF613871F6B1F0100B50BE5 /* LoginViewController.swift in Sources */,
 				FBF6136D1F6AF23200B50BE5 /* AppDelegate.swift in Sources */,
 				FBC039881F7E982E00765DED /* TaxesAndBenefitsTableViewController.swift in Sources */,
