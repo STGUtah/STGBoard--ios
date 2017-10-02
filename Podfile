@@ -12,5 +12,6 @@ pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chamel
 pod 'RAMPaperSwitch'
 pod 'Presentr'
 pod 'IQKeyboardManagerSwift'
+pod 'DZNEmptyDataSet'
 
 end

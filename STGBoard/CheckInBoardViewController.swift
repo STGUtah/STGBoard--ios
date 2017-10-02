@@ -7,20 +7,27 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
+import ChameleonFramework
 
-class CheckInBoardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PersonTableViewCellDelegate {
+class CheckInBoardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PersonTableViewCellDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     let personController = PersonController.shared
     @IBOutlet weak var tableView: UITableView!
     let refreshControl = UIRefreshControl()
+    
+    var hasAttemptedLoad: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
         
         personController.getAllPeopleFromServer { (people) in
             DispatchQueue.main.async {
+                self.hasAttemptedLoad = true
                 self.tableView.reloadData()
             }
         }
@@ -31,7 +38,6 @@ class CheckInBoardViewController: UIViewController, UITableViewDelegate, UITable
         NotificationCenter.default.addObserver(forName: PersonController.regionUpdateNotificationName, object: nil, queue: OperationQueue.main) { (_) in
             self.refreshAction()
         }
-        
     }
     
     func refreshAction(){
@@ -75,6 +81,31 @@ class CheckInBoardViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
+    
+    // MARK: - Empty Data Set Source
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let string = "There appears to be a problem"
+        let attributes = [NSForegroundColorAttributeName: FlatWhite()]
+        
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
+    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
+        return NSAttributedString(string: "This is a button")
+    }
+    
+    func backgroundColor(forEmptyDataSet scrollView: UIScrollView!) -> UIColor! {
+        return GradientColor(.radial, frame: scrollView.frame, colors: [FlatTeal(), FlatTealDark()])
+    }
+    
+    func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {
+        return self.hasAttemptedLoad
+    }
+    
+    func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
+        print("TAPPED BUTTON")
+    }
     
 
     /*
