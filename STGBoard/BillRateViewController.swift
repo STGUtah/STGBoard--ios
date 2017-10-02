@@ -103,6 +103,13 @@ class BillRateViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        guard let wageText = wageTextField.text else { return }
+        if wageText.isEmpty {
+            self.delegate?.updateFields(withWageType: .salary, andWage: 0.00)
+        }
+    }
+    
     
     // MARK: - Navigation
     
